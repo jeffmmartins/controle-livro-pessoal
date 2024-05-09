@@ -1,7 +1,14 @@
 import React from "react";
+import MenuSuperior from "./components/MenuSuperior";
+import InclusaoLivros from "./components/InclusaoLivros";
 
 const App = () => {
-  return <h1>Ola</h1>
+  return (
+    <>
+      <MenuSuperior/>
+      <InclusaoLivros/>
+    </>
+  )
 }
 
 export default App;
