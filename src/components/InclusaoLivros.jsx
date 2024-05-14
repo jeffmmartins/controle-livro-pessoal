@@ -1,13 +1,28 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { inAxios } from '../config_axios';
+import { useState } from 'react';
 
 const InclusaoLivros = () => {
 
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit,reset} = useForm();
     
+    const [aviso, setAviso] = useState("");
 
-    const salvar = (campos) => {
-        alert(JSON.stringify(campos))
+    const salvar = async (campos) => {
+        try {
+            const response = await inAxios.post("livros", campos);
+            setAviso(`Ok! Livro cadastrado com código  ${response.data.id}`);
+        } catch (error) {
+            setAviso(`Erro... Livro nao cadastrado: ${error}`);
+        }
+
+        //setTimeout: executa o comando apos o tempo indicado 
+        setTimeout(() => {
+            setAviso("");
+        }, 5000);
+        //limpa os campos de formulario para uma nova inclusão 
+        reset({titulo:"", autor:"", foto:"", ano:"", preco:""})    
     }
 
   return (
@@ -44,7 +59,7 @@ const InclusaoLivros = () => {
         <input type="submit" className='btn btn-primary mt-3' value='Enviar' />
         <input type="reset" className='btn btn-danger mt-3 ms-3' value='Limpar' />
       </form>
-      <div className='Alert'></div>
+      <div className={aviso.startsWith("Ok!") ? "alert alert-success" : aviso.startsWith("Erro") ? "alert alert-danger" : ""}>{aviso}</div>
     </div>
   );
 };
