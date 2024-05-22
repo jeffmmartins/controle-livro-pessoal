@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MenuSuperior = () => {
   return (
@@ -8,20 +9,12 @@ const MenuSuperior = () => {
           Controle Pessola de Livros
         </a>
         <ul className="navbar-nav">
+          <Link to="/" className="nav-link">Inclusão</Link>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Inclusao
-            </a>
+          <Link to="/manut" className="nav-link">Manutenção</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Manutenção
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Resumo
-            </a>
+          <Link to="/resumo" className="nav-link">Resumo</Link>
           </li>
         </ul>
       </div>

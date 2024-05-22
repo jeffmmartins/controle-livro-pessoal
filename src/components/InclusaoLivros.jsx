@@ -27,7 +27,7 @@ const InclusaoLivros = () => {
 
   return (
     <div className='Container'>
-        {register}
+        
       <h4 className='fst-italic mt-3'>Inclusão</h4>
       <form onSubmit={handleSubmit(salvar)}>
         <div  className='form-group'>
